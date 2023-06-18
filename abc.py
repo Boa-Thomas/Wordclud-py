@@ -30,6 +30,7 @@ text_data = text_data.astype(str)
 stop_words = set(stopwords.words('english'))
 
 # Add custom stop words
+#Palavras que não fazem sentido para a análise
 custom_stop_words = ['de', 'e', 'para','nan','que','não','em','estava','eu','um','pra','sem']  # replace with your words
 stop_words = stop_words.union(custom_stop_words)
 
