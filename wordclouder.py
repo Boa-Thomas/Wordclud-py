@@ -40,6 +40,9 @@ text_data = text_data.apply(word_tokenize)
 # Remove stop words
 text_data = text_data.apply(lambda x: [word for word in x if word not in stop_words])
 
+#uppercase
+text_data = text_data.str.upper()
+
 # Combine all the words into a single list
 all_words = text_data.sum()
 
@@ -52,8 +55,12 @@ top_10_words = word_counts.most_common(10)
 # Convert list of tuples to dictionary
 top_10_dict = dict(top_10_words)
 
+# Function to return color for the words
+def black_color_func(*args, **kwargs):
+    return "black"
+
 # Generate a word cloud image
-wordcloud = WordCloud(width=800, height=400, background_color='white').generate_from_frequencies(top_10_dict)
+wordcloud = WordCloud(width=800, height=400, background_color='transparent', color_func=black_color_func).generate_from_frequencies(top_10_dict)
 
 # Display the generated image with matplotlib
 plt.figure(figsize=(10, 5))
